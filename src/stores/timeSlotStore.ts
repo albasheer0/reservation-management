@@ -89,6 +89,7 @@ export const useTimeSlotStore = defineStore('timeSlot', {
             groups[date] = [];
           }
           groups[date].push(slot);
+          groups[date].reverse();
           return groups;
         },
         {}

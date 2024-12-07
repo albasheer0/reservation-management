@@ -19,21 +19,23 @@
         :colorCounts="colorCounts"
         @filter-change="applyFilters"
       />
-    
+    <div class="date-group">
+
       <!-- Display Grouped Time Slots -->
-      <div v-for="(timeGroups, date) in groupedTimeSlots" :key="date" class="date-group">
+      <div v-for="(timeGroups, date) in groupedTimeSlots" :key="date">
         <details open>
-        <summary>{{ formatDate(date) }}</summary>
-        <div class="time-slots">
-          <TimeSlotComponent
+          <summary>{{ formatDate(date) }}</summary>
+          <div class="time-slots">
+            <TimeSlotComponent
             v-for="slot in timeGroups"
             :key="slot.id"
             :timeSlot="slot"
             class="column"
-          />
-        </div>
+            />
+          </div>
         </details>
       </div>
+    </div>
     </div>
   </div>
 </template>
@@ -118,7 +120,8 @@ details {
       border: 2px solid #2c2c2c; /* Blue border */
       border-radius: 8px;
       max-width: 100%;
-      background-color: #ffffff00;
+      min-width: 100%;
+      background-color: #7d7c7c00;
     }
 
     details[open] {
@@ -152,10 +155,16 @@ details {
 
 .date-group {
   margin-bottom: 20px;
+    display: grid;
+    gap: 25px;
+    grid-auto-flow: row;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-auto-columns: 200px;
 }
 
 .time-slots {
   display: grid;
+  padding: 5px;
   gap: 10px; /* Space between items */
   grid-auto-flow: row;
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));

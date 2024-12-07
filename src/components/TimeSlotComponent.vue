@@ -2,9 +2,7 @@
   <div :class="['time-slot', categoryClass]">
     
     <div class="slot-date"><p>{{ timeRange.start }} </p> <p>{{ timeRange.end }}</p></div>
-    <div class="slot-header">
       <p class="slot-capacity">{{ currentCapacity   }} / {{ maxCapacity }}</p>
-    </div>
   </div>
 </template>
 
@@ -58,25 +56,27 @@ minute: 'numeric' as const,
 </script>
 
 <style scoped>
-.slot-header {
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-  align-items: center;
-  margin-top: 4px;
-    margin-bottom: -25px;
-
-}
 .slot-capacity{
-  font-weight: bolder;
     color: black;
+    font-size: 0.7rem;
 }
 .time-slot {
   text-align: center;
 user-select: none;
   padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
   border-radius: 5px;
   width: 100%;
+
+}
+.time-slot:hover{
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* write outside border */
+  border: 1px solid #000000;
 
 }
 .time-slot.green {
@@ -93,11 +93,11 @@ user-select: none;
 }
 .slot-date {
   display: flex;
+  font-size: 0.7rem;
   flex-direction: column;
   font-weight: bold;
     color: #000000;
-    margin-top: -20px;
-    margin-bottom: -5px;
+    margin-top: -25px;
     padding: 0;
 }
 .slot-date p {
